@@ -127,7 +127,7 @@ class EmacsMac2 < Formula
         gcc_ver_major = gcc_ver.major
         gcc_lib="#{HOMEBREW_PREFIX}/lib/gcc/#{gcc_ver_major}"
 
-        ENV.append "BYTE_COMPILE_EXTRA_FLAGS", "--eval \"(setq comp-speed 3)\""
+        ENV.append "BYTE_COMPILE_EXTRA_FLAGS", "--eval \"(setq native-comp-speed 3)\""
 
         #ENV.append "CFLAGS", "-march=native -O2 -pipe -ftree-vectorize"
         #apple-m1
@@ -155,7 +155,7 @@ class EmacsMac2 < Formula
 
     system "./autogen.sh"
     system "./configure", *args
-    system "make"
+    system "make", "-j8"
     system "make", "install"
     prefix.install "NEWS-mac"
 
