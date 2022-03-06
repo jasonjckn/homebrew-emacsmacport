@@ -1,5 +1,5 @@
 # coding: utf-8
-class EmacsMac < Formula
+class EmacsMac2 < Formula
   desc "YAMAMOTO Mitsuharu's Mac port of GNU Emacs"
   homepage "https://www.gnu.org/software/emacs/"
   url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-27.2-mac-8.3.tar.gz"
@@ -126,6 +126,9 @@ class EmacsMac < Formula
         gcc_ver = Formula["gcc"].any_installed_version
         gcc_ver_major = gcc_ver.major
         gcc_lib="#{HOMEBREW_PREFIX}/lib/gcc/#{gcc_ver_major}"
+
+        ENV.append "BYTE_COMPILE_EXTRA_FLAGS", "--eval \"(setq comp-speed 3)\""
+        ENV.append "CFLAGS", "-march=native -O2 -pipe -ftree-vectorize"
 
         ENV.append "CFLAGS", "-I#{Formula["gcc"].include}"
         ENV.append "CFLAGS", "-I#{Formula["libgccjit"].include}"
