@@ -128,7 +128,10 @@ class EmacsMac2 < Formula
         gcc_lib="#{HOMEBREW_PREFIX}/lib/gcc/#{gcc_ver_major}"
 
         ENV.append "BYTE_COMPILE_EXTRA_FLAGS", "--eval \"(setq comp-speed 3)\""
-        ENV.append "CFLAGS", "-march=native -O2 -pipe -ftree-vectorize"
+
+        #ENV.append "CFLAGS", "-march=native -O2 -pipe -ftree-vectorize"
+        #apple-m1
+        ENV.append "CFLAGS", "-march=apple-m1 -O2 -pipe -ftree-vectorize"
 
         ENV.append "CFLAGS", "-I#{Formula["gcc"].include}"
         ENV.append "CFLAGS", "-I#{Formula["libgccjit"].include}"
