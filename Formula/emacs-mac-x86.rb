@@ -1,5 +1,5 @@
 # coding: utf-8
-class EmacsMac2 < Formula
+class EmacsMacX86 < Formula
   desc "YAMAMOTO Mitsuharu's Mac port of GNU Emacs"
   homepage "https://www.gnu.org/software/emacs/"
   url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-27.2-mac-8.3.tar.gz"
@@ -129,9 +129,9 @@ class EmacsMac2 < Formula
 
         ENV.append "BYTE_COMPILE_EXTRA_FLAGS", "--eval \"(setq native-comp-speed 3)\""
 
-        #ENV.append "CFLAGS", "-march=native -O2 -pipe -ftree-vectorize"
+        ENV.append "CFLAGS", "-march=native -O2 -pipe -ftree-vectorize"
         #apple-m1
-        ENV.append "CFLAGS", "-mcpu=apple-m1 -O2 -pipe -ftree-vectorize"
+        #ENV.append "CFLAGS", "-mcpu=apple-m1 -O2 -pipe -ftree-vectorize"
 
 
         ENV.append "CFLAGS", "-I#{Formula["gcc"].include}"
