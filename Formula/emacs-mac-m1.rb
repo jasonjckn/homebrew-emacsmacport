@@ -126,12 +126,12 @@ class EmacsMacM1 < Formula
         gcc_ver = Formula["gcc"].any_installed_version
         gcc_ver_major = gcc_ver.major
         gcc_lib="#{HOMEBREW_PREFIX}/lib/gcc/#{gcc_ver_major}"
+        
+        ENV.append "BYTE_COMPILE_EXTRA_FLAGS",
+                   "--eval \"(setq native-comp-speed 3)\"", 
+                   "--eval \"(setq native-comp-compiler-options '(\"-mcpu=apple-m1\" \"-O2\" \"-pipe\" \"-ftree-vectorize\" \"-fomit-frame-pointer\"))\""
 
-        ENV.append "BYTE_COMPILE_EXTRA_FLAGS", "--eval \"(setq native-comp-speed 3)\""
-
-        #ENV.append "CFLAGS", "-march=native -O2 -pipe -ftree-vectorize"
-        #apple-m1
-        ENV.append "CFLAGS", "-mcpu=apple-m1 -O2 -pipe -ftree-vectorize"
+        ENV.append "CFLAGS", "-mcpu=apple-m1 -O2 -pipe -ftree-vectorize -fomit-frame-pointer"
 
 
         ENV.append "CFLAGS", "-I#{Formula["gcc"].include}"
