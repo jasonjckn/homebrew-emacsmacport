@@ -117,7 +117,7 @@ class EmacsMacM1 < Formula
 
       ENV.append "BYTE_COMPILE_EXTRA_FLAGS",
                  "--eval \"(setq native-comp-speed 3)\"",
-                 "--eval \"(setq native-comp-compiler-options '(\"-O2\", \"-mtune=apple-m1\"))\""
+                 "--eval \"(setq native-comp-compiler-options '(\"-O2\"))\""
 
       ENV.append "CFLAGS", "-mcpu=apple-m1 -O2 -pipe -ftree-vectorize -fomit-frame-pointer"
 
