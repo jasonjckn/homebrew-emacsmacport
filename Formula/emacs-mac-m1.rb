@@ -119,7 +119,7 @@ class EmacsMacM1 < Formula
                  "--eval \"(setq native-comp-speed 3)\"",
                  "--eval \"(setq native-comp-compiler-options '(\"-O2\", \"-mtune=apple-m1\"))\""
 
-      ENV.append "CFLAGS", "-mcpu=apple-m1 -O2 -pipe -ftree-vectorize -fomit-frame-pointer"
+      #ENV.append "CFLAGS", "-mcpu=apple-m1 -O2 -pipe -ftree-vectorize -fomit-frame-pointer"
 
 
       ENV.append "CFLAGS", "-I#{Formula["gcc"].include}"
