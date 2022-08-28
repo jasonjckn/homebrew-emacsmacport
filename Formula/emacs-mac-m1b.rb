@@ -116,6 +116,13 @@ class EmacsMacM1b < Formula
       gcc_ver = Formula["gcc"].any_installed_version
       gcc_ver_major = gcc_ver.major
       gcc_lib="#{HOMEBREW_PREFIX}/lib/gcc/#{gcc_ver_major}"
+      
+      
+      ENV.append "BYTE_COMPILE_EXTRA_FLAGS",
+                 "--eval \"(setq native-comp-speed 3)\"",
+                 "--eval \"(setq native-comp-compiler-options '(\"-O2\"))\""
+
+      ENV.append "CFLAGS", "-mcpu=apple-m1 -O2 -pipe -ftree-vectorize -fomit-frame-pointer"
 
       ENV.append "CFLAGS", "-I#{Formula["gcc"].include}"
       ENV.append "CFLAGS", "-I#{Formula["libgccjit"].include}"
@@ -137,7 +144,7 @@ class EmacsMacM1b < Formula
 
     system "./autogen.sh"
     system "./configure", *args
-    system "make"
+    system "make", "NATIVE_FULL_AOT=1", "-j8"
     system "make", "install"
     prefix.install "NEWS-mac"
 
