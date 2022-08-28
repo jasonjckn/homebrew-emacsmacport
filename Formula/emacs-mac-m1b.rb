@@ -120,7 +120,8 @@ class EmacsMacM1b < Formula
        
       ENV["CC"] = "clang"
       ENV.prepend "LDFLAGS", "-L/opt/homebrew/opt/llvm/lib"
-      ENV["CFLAGS"]  = "-I/opt/homebrew/opt/llvm/include -w -mmacosx-version-min=12 -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX12.sdk"
+      #ENV["CFLAGS"]  = "-I/opt/homebrew/opt/llvm/include -w -mmacosx-version-min=12 -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX12.sdk"
+      ENV["CFLAGS"]  = "-I/opt/homebrew/opt/llvm/include -mmacosx-version-min=12 -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX12.sdk"
       ENV["CPPFLAGS"] = ENV["CFLAGS"]
       ENV.prepend_path "PATH", "/opt/homebrew/opt/llvm/bin"
       
