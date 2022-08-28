@@ -1,5 +1,5 @@
 # coding: utf-8
-class EmacsMacM1b < Formula
+class EmacsMacM1c < Formula
   desc "YAMAMOTO Mitsuharu's Mac port of GNU Emacs"
   homepage "https://www.gnu.org/software/emacs/"
   url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-28.1-mac-9.0.tar.gz"
@@ -118,33 +118,36 @@ class EmacsMacM1b < Formula
       gcc_lib="#{HOMEBREW_PREFIX}/lib/gcc/#{gcc_ver_major}"
       
        
-      ENV["CC"] = "clang"
-      ENV.prepend "LDFLAGS", "-L/opt/homebrew/opt/llvm/lib"
+      #ENV["CC"] = "clang"
+      #ENV.prepend "LDFLAGS", "-L/opt/homebrew/opt/llvm/lib"
       #ENV["CFLAGS"]  = "-I/opt/homebrew/opt/llvm/include -w -mmacosx-version-min=12 -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX12.sdk"
-      ENV["CFLAGS"]  = "-I/opt/homebrew/opt/llvm/include -mmacosx-version-min=12 -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX12.sdk"
-      ENV["CPPFLAGS"] = ENV["CFLAGS"]
-      ENV.prepend_path "PATH", "/opt/homebrew/opt/llvm/bin"
+      #ENV["CFLAGS"]  = "-I/opt/homebrew/opt/llvm/include -mmacosx-version-min=12 -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX12.sdk"
+      #ENV["CPPFLAGS"] = ENV["CFLAGS"]
+      #ENV.prepend_path "PATH", "/opt/homebrew/opt/llvm/bin"
       
       
       ENV.append "BYTE_COMPILE_EXTRA_FLAGS",
                  "--eval \"(setq native-comp-speed 3)\"",
-                 "--eval \"(setq native-comp-compiler-options '(\"-O2\"))\""
+                 "--eval \"(setq native-comp-compiler-options '(\"-O3\"))\""
 
-      ENV.append "CFLAGS", "-mcpu=apple-m1 -O2 -pipe -ftree-vectorize -fomit-frame-pointer"
+      ENV.append "CFLAGS", "-mcpu=apple-m1 -O3 -pipe -ftree-vectorize -fomit-frame-pointer"
       
 
-      #ENV.append "CFLAGS", "-I#{Formula["gcc"].include}"
-      #ENV.append "CFLAGS", "-I#{Formula["libgccjit"].include}"
-      ENV.append "CFLAGS", "-I/opt/homebrew/Cellar/libgccjit/12.2.0/include"
+      ENV.append "CFLAGS", "-I#{Formula["gcc"].include}"
+      ENV.append "CFLAGS", "-I#{Formula["libgccjit"].include}"
+      #ENV.append "CFLAGS", "-I/opt/homebrew/Cellar/libgccjit/12.2.0/include"
    
 
-      #ENV.append "LDFLAGS", "-L#{gcc_lib}"
-      #ENV.append "LDFLAGS", "-I#{Formula["gcc"].include}"
-      #ENV.append "LDFLAGS", "-I#{Formula["libgccjit"].include}"
-      ENV.append "LDFLAGS", "-L/opt/homebrew/Cellar/libgccjit/12.2.0/lib/gcc/current"
-      ENV.append "LDFLAGS", "-rtlib=compiler-rt"
+      ENV.append "LDFLAGS", "-L#{gcc_lib}"
+      ENV.append "LDFLAGS", "-I#{Formula["gcc"].include}"
+      ENV.append "LDFLAGS", "-I#{Formula["libgccjit"].include}"
+      #ENV.append "LDFLAGS", "-L/opt/homebrew/Cellar/libgccjit/12.2.0/lib/gcc/current"
+      #ENV.append "LDFLAGS", "-rtlib=compiler-rt"
       #ENV.append "LDFLAGS", "-fuse-ld=lld -rtlib=compiler-rt"
-      
+ 
+      system "echo", "-----------------------------------------------"
+      system "echo", ENV["CFLAGS"]
+      system "echo", "-----------------------------------------------"
       system "echo", "-----------------------------------------------"
       system "echo", ENV["LDFLAGS"]
       system "echo", "-----------------------------------------------"
