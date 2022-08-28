@@ -117,19 +117,25 @@ class EmacsMacM1b < Formula
       gcc_ver_major = gcc_ver.major
       gcc_lib="#{HOMEBREW_PREFIX}/lib/gcc/#{gcc_ver_major}"
       
+         
+      ENV.prepend "LDFLAGS", "-L/opt/homebrew/opt/llvm/lib"
+      ENV["CFLAGS"]  = "-I/opt/homebrew/opt/llvm/include -w -mmacosx-version-min=12 -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX12.sdk"
+      ENV["CPPFLAGS"] = ENV["CFLAGS"]
+      ENV.prepend_path "PATH", "/opt/homebrew/opt/llvm/bin"
+      
       
       ENV.append "BYTE_COMPILE_EXTRA_FLAGS",
                  "--eval \"(setq native-comp-speed 3)\"",
-                 "--eval \"(setq native-comp-compiler-options '(\"-O2\"))\""
+                 "--eval \"(setq native-comp-compiler-options '(\"-O3\"))\""
 
-      ENV.append "CFLAGS", "-mcpu=apple-m1 -O2 -pipe -ftree-vectorize -fomit-frame-pointer"
+      ENV.append "CFLAGS", "-mcpu=apple-m1 -O3 -pipe -ftree-vectorize -fomit-frame-pointer"
 
-      ENV.append "CFLAGS", "-I#{Formula["gcc"].include}"
-      ENV.append "CFLAGS", "-I#{Formula["libgccjit"].include}"
+      #ENV.append "CFLAGS", "-I#{Formula["gcc"].include}"
+      #ENV.append "CFLAGS", "-I#{Formula["libgccjit"].include}"
 
-      ENV.append "LDFLAGS", "-L#{gcc_lib}"
-      ENV.append "LDFLAGS", "-I#{Formula["gcc"].include}"
-      ENV.append "LDFLAGS", "-I#{Formula["libgccjit"].include}"
+      #ENV.append "LDFLAGS", "-L#{gcc_lib}"
+      #ENV.append "LDFLAGS", "-I#{Formula["gcc"].include}"
+      #ENV.append "LDFLAGS", "-I#{Formula["libgccjit"].include}"
     end
 
     icons_dir = buildpath/"mac/Emacs.app/Contents/Resources"
