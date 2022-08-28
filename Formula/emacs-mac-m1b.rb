@@ -144,7 +144,7 @@ class EmacsMacM1b < Formula
       #ENV.append "LDFLAGS", "-fuse-ld=lld -rtlib=compiler-rt"
       
       system "echo", "-----------------------------------------------"
-      system "echo", END["LDFLAGS"]
+      system "echo", ENV["LDFLAGS"]
       system "echo", "-----------------------------------------------"
     end
 
