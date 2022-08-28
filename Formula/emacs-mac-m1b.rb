@@ -134,12 +134,14 @@ class EmacsMacM1b < Formula
       
 
       #ENV.append "CFLAGS", "-I#{Formula["gcc"].include}"
-      ENV.append "CFLAGS", "-I#{Formula["libgccjit"].include}"
+      #ENV.append "CFLAGS", "-I#{Formula["libgccjit"].include}"
+      ENV.append "CFLAGS", "-I/opt/homebrew/Cellar/libgccjit/12.2.0/include"
    
 
       #ENV.append "LDFLAGS", "-L#{gcc_lib}"
       #ENV.append "LDFLAGS", "-I#{Formula["gcc"].include}"
-      ENV.append "LDFLAGS", "-I#{Formula["libgccjit"].include}"
+      #ENV.append "LDFLAGS", "-I#{Formula["libgccjit"].include}"
+      ENV.append "LDFLAGS", "-L/opt/homebrew/Cellar/libgccjit/12.2.0/lib/gcc/current"
       ENV.append "LDFLAGS", "-rtlib=compiler-rt"
       #ENV.append "LDFLAGS", "-fuse-ld=lld -rtlib=compiler-rt"
       
