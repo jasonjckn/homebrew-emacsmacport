@@ -128,9 +128,9 @@ class EmacsMacM1b < Formula
       
       ENV.append "BYTE_COMPILE_EXTRA_FLAGS",
                  "--eval \"(setq native-comp-speed 3)\"",
-                 "--eval \"(setq native-comp-compiler-options '(\"-O2\"))\""
+                 "--eval \"(setq native-comp-compiler-options '(\"-O3\"))\""
 
-      ENV.append "CFLAGS", "-mcpu=apple-m1 -O2 -pipe -ftree-vectorize -fomit-frame-pointer"
+      ENV.append "CFLAGS", "-mcpu=apple-m1 -O3 -pipe -ftree-vectorize -fomit-frame-pointer"
       
 
       #ENV.append "CFLAGS", "-I#{Formula["gcc"].include}"
