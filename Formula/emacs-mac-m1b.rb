@@ -144,7 +144,10 @@ class EmacsMacM1b < Formula
       ENV.append "LDFLAGS", "-L/opt/homebrew/Cellar/libgccjit/12.2.0/lib/gcc/current"
       ENV.append "LDFLAGS", "-rtlib=compiler-rt"
       #ENV.append "LDFLAGS", "-fuse-ld=lld -rtlib=compiler-rt"
-      
+
+      system "echo", "-----------------------------------------------"
+      system "echo", ENV["CFLAGS"]
+      system "echo", "-----------------------------------------------"
       system "echo", "-----------------------------------------------"
       system "echo", ENV["LDFLAGS"]
       system "echo", "-----------------------------------------------"
@@ -162,8 +165,8 @@ class EmacsMacM1b < Formula
 
     system "./autogen.sh"
     system "./configure", *args
-    system "make", "NATIVE_FULL_AOT=1", "-j8"
-    system "make", "install"
+    system "gmake", "NATIVE_FULL_AOT=1", "-j8"
+    system "gmake", "install"
     prefix.install "NEWS-mac"
 
     # Follow Homebrew and don't install ctags from Emacs. This allows Vim
