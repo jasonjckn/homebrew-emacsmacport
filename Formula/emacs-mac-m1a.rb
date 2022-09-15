@@ -92,10 +92,10 @@ class EmacsMacM1a < Formula
   # patch for multi-tty support, see the following links for details
   # https://bitbucket.org/mituharu/emacs-mac/pull-requests/2/add-multi-tty-support-to-be-on-par-with/diff
   # https://ylluminarious.github.io/2019/05/23/how-to-fix-the-emacs-mac-port-for-multi-tty-access/
-  patch do
-    url 'https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/667f0efc08506facfc6963ac1fd1d5b9b777e094/patches/multi-tty-27.diff'
-    sha256 '5a13e83e79ce9c4a970ff0273e9a3a07403cc07f7333a0022b91c191200155a1'
-  end
+  # patch do
+  #   url 'https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/667f0efc08506facfc6963ac1fd1d5b9b777e094/patches/multi-tty-27.diff'
+  #   sha256 '5a13e83e79ce9c4a970ff0273e9a3a07403cc07f7333a0022b91c191200155a1'
+  # end
 
   def install
     args = [
