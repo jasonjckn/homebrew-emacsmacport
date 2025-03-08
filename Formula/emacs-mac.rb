@@ -19,10 +19,10 @@ class EmacsMac < Formula
     url "https://github.com/jasonjckn/emacs-mac.git", branch: "work_30"
   end
 
-  patch do
-    url "#{HOMEBREW_LIBRARY}/Taps/railwaycat/homebrew-emacsmacport/patches/prefer-typo-ascender-descender-linegap.diff", using: CopyDownloadStrategy
-    sha256 "318395d3869d3479da4593360bcb11a5df08b494b995287074d0d744ec562c17"
-  end
+  #patch do
+  #  url "#{HOMEBREW_LIBRARY}/Taps/railwaycat/homebrew-emacsmacport/patches/prefer-typo-ascender-descender-linegap.diff", using: CopyDownloadStrategy
+  #  sha256 "318395d3869d3479da4593360bcb11a5df08b494b995287074d0d744ec562c17"
+  #end
 
   option "without-modules", "Build without dynamic modules support"
   option "with-ctags", "Don't remove the ctags executable that emacs provides"
